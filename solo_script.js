@@ -9,7 +9,7 @@ var arrayScout = ["Scout", "6243", "74750", 5];
 var array = [arrayAtticus, arrayJem, arrayBoo, arrayScout];
 
 //Create variables used to write to the DOM
-var newEl, newText, position;
+var newEl, newText, position, spaced;
 //Capture the position of insertion into the DOM
 position = document.getElementById('content');
 
@@ -17,8 +17,9 @@ position = document.getElementById('content');
 //Note that the information is not 'clean'
 for(var i = 0; i < array.length; i++){
 	array[i] = calculateSTI(array[i]);
+	spaced = array[i].join(', ');
  	newEl = document.createElement('li');
-	newText = document.createTextNode(array[i]);
+	newText = document.createTextNode(spaced);
 	newEl.appendChild(newText);
 	position.appendChild(newEl);
 }
@@ -26,7 +27,7 @@ for(var i = 0; i < array.length; i++){
 function calculateSTI(array){
   var newArray = [];
 
-  newArray[0] = array[0];
+  newArray[0] = "Name: " + array[0];
 
   var employeeNumber = array[1];
   var baseSalary = array[2];
@@ -37,9 +38,9 @@ function calculateSTI(array){
     bonus = 0.13;
   }
 
-  newArray[1] = (bonus * 100 + "%");
-  newArray[2] = Math.round(baseSalary * (1.0 + bonus));
-  newArray[3] = Math.round(baseSalary * bonus);
+  newArray[1] = ("Bonus percentage: " + bonus * 100 + "%");
+  newArray[2] = ("Adjusted salary: $" + Math.round(baseSalary * (1.0 + bonus)));
+  newArray[3] = ("Bonus dollars: $" + Math.round(baseSalary * bonus));
   console.log(newArray[0] + " " + newArray[1] + " " + newArray[2] + " " + newArray[3]);
   return newArray;
 }
@@ -47,12 +48,6 @@ function calculateSTI(array){
 function getBaseSTI(reviewScore){
   var basePercent;
   switch(reviewScore){
-    case 1:
-      basePercent = 0;
-      break;
-    case 2:
-      basePercent = 0;
-      break;
     case 3:
       basePercent = 0.04;
       break;
