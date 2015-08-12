@@ -17,9 +17,8 @@ position = document.getElementById('content');
 //Note that the information is not 'clean'
 for(var i = 0; i < array.length; i++){
 	array[i] = calculateSTI(array[i]);
-	spaced = array[i].join(', ');
  	newEl = document.createElement('li');
-	newText = document.createTextNode(spaced);
+	newText = document.createTextNode(array[i].join(', '));
 	newEl.appendChild(newText);
 	position.appendChild(newEl);
 }
