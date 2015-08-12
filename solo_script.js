@@ -39,8 +39,8 @@ function calculateSTI(array){
   }
 
   newArray[1] = ("Bonus percentage: " + bonus * 100 + "%");
-  newArray[2] = ("Adjusted salary: $" + Math.round(baseSalary * (1.0 + bonus)));
-  newArray[3] = ("Bonus dollars: $" + Math.round(baseSalary * bonus));
+  newArray[2] = ("Adjusted salary: $" + (Math.round(baseSalary * (1.0 + bonus))).toLocaleString());
+  newArray[3] = ("Bonus dollars: $" + (Math.round(baseSalary * bonus)).toLocaleString());
   console.log(newArray[0] + " " + newArray[1] + " " + newArray[2] + " " + newArray[3]);
   return newArray;
 }
