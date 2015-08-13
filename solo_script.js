@@ -81,7 +81,7 @@ var Atticus = new Employee("Atticus", "2405", "47000", 3);
 var Jem = new Employee("Jem", "62347", "63500", 4);
 var Boo = new Employee("Boo", "11435", "54000", 3);
 var Scout = new Employee("Scout", "6243", "74750", 5);
-//place objects into array
+//empArray and bonusArray hold objects, objArray contains the final obeject converted into an array.
 var empArray = [Atticus, Jem, Boo, Scout];
 var bonusArray = [];
 var objArray = [];
@@ -90,8 +90,7 @@ var newEl, newText, position;
 //Capture the position of insertion into the DOM
 position = document.getElementById('content');
 
-//Loop the array, extracting each array and writing information to the DOM
-//Note that the information is not 'clean'
+//Loop the array of objects, extracting each array and writing information to the DOM
 for(var i = 0; i < empArray.length; i++){
 	bonusArray[i] = empArray[i].calculateSTI();
 	objArray[i] = bonusArray[i].convertToArray();
