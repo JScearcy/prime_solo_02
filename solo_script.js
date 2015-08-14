@@ -1,15 +1,14 @@
-
 //object constructor for beginning object
 var Employee = function(name, empNum, sal, rat, nameOut, bonus, bonusPer, adjSal){
-	this.name = name;
-	this.empNum = empNum;
-	this. sal = sal;
-	this.rat = rat;
+	this.name = name || "Not Specified";
+	this.empNum = empNum || '00000';
+	this. sal = sal || '00000';
+	this.rat = rat || 0;
 	this.nameOut = "Name: " + this.name;
 	this.bonus = this.calculateBonus();
 	this.bonusPer = ("Bonus percentage: " + this.bonus * 100 + "%");
 	this.adjSal = ("Adjusted salary: $" + (Math.round(this.sal * (1.0 + this.bonus))).toLocaleString());
-	this.bonus = ("Bonus dollars: $" + (Math.round(this.sal * this.bonus)).toLocaleString());
+	this.bonusOut = ("Bonus dollars: $" + (Math.round(this.sal * this.bonus)).toLocaleString());
 }
 //prototype to calculatebonus
 Employee.prototype.calculateBonus = function(){
@@ -17,7 +16,7 @@ Employee.prototype.calculateBonus = function(){
   if(this.bonus > 0.13){
     this.bonus = 0.13;
 	}
-		return this.bonus;
+	return this.bonus;
 }
 //prototype for STI function
 Employee.prototype.getBaseSTI = function(reviewScore){
@@ -66,7 +65,7 @@ position = document.getElementById('content');
 //Loop the array of objects and insert data into the DOM
 for(var i = 0; i < empArray.length; i++){
  	newEl = document.createElement('li');
-	newText = document.createTextNode(empArray[i].nameOut + ', ' + empArray[i].bonusPer + ', ' + empArray[i].adjSal + ', ' + empArray[i].bonus);
+	newText = document.createTextNode(empArray[i].nameOut + ', ' + empArray[i].bonusPer + ', ' + empArray[i].adjSal + ', ' + empArray[i].bonusOut);
 	newEl.appendChild(newText);
 	position.appendChild(newEl);
 }
